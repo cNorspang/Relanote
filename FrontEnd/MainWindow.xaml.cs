@@ -552,6 +552,11 @@ namespace FrontEnd
             NoteContentBox.FontFamily = new FontFamily(configuration.AppSettings.Settings["DefaultFont"].Value);
             tabsize = byte.Parse(configuration.AppSettings.Settings["TabSize"].Value);
         }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
     }
 
     public static class Extensions
@@ -564,6 +569,16 @@ namespace FrontEnd
                 newString += str;
             }
             return newString;
+        }
+    }
+
+    public static class Command
+    {
+       static RoutedCommand SaveCommand = new RoutedCommand();
+
+        static void addCommands()
+        {
+            SaveCommand.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control));
         }
     }
 }
